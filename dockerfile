@@ -4,7 +4,7 @@ ARG KERNEL_BRANCH=rpi-6.6.y
 ARG KERNEL_GIT=https://github.com/raspberrypi/linux.git
 
 # Distro source
-ARG DISTRO_DATE=2024-07-04
+ARG DISTRO_DATE=2024-11-19
 ARG DISTRO_FILE=$DISTRO_DATE-raspios-bookworm-arm64-lite.img
 ARG DISTRO_IMG=https://downloads.raspberrypi.com/raspios_lite_arm64/images/raspios_lite_arm64-$DISTRO_DATE/$DISTRO_FILE.xz
 
@@ -70,7 +70,7 @@ RUN rm /mnt/root/usr/lib/systemd/system/userconfig.service \
  # Create new distro image from modified boot and root
 ARG BUILD_DIR
 RUN mkdir $BUILD_DIR
-RUN guestfish -N $BUILD_DIR/distro.img=bootroot:vfat:ext4:2G \
+RUN guestfish -N $BUILD_DIR/distro.img=bootroot:vfat:ext4:4G:500M \
  && guestfish add $BUILD_DIR/distro.img : run : mount /dev/sda1 / : glob copy-in /mnt/boot/* / : umount / : mount /dev/sda2 / : glob copy-in /mnt/root/* / \
  && sfdisk --part-type $BUILD_DIR/distro.img 1 c
 
@@ -138,6 +138,7 @@ RUN pip3 install -r $APP_DIR/requirements.txt
 
 # Copy helper scripts
 COPY src/app/ $APP_DIR
+
 
 # Copy build files
 ARG BASE_DIR

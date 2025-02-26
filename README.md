@@ -16,7 +16,7 @@ Example use cases:
 Key features:
 - Pi 3, 4 and **5** support
 - 64 bit (ARMv8) Raspberry PI OS (24.04, Bookworm) included
-  - Image: **[2024-07-04-raspios-bookworm-arm64-lite](https://downloads.raspberrypi.com/raspios_lite_arm64/images/raspios_lite_arm64-2024-07-04/)**
+  - Image: **[2024-11-19-raspios-bookworm-arm64-lite](https://downloads.raspberrypi.com/raspios_lite_arm64/images/raspios_lite_arm64-2024-11-19/)**
   - Kernel: **[6.6-y](https://github.com/raspberrypi/linux/tree/rpi-6.6.y)**
 - Internet access
 - No root required
